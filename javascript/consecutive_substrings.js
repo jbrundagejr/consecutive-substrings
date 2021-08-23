@@ -1,5 +1,18 @@
 function consecutiveSubstrings(string) {
-  // type your code here
+  let strArr = []
+  let letterArr = string.split("")
+  for(let i = 0; i < letterArr.length; i++){
+    let firstLetter = letterArr[i]
+    if(!strArr.includes(firstLetter)){
+      strArr.push(firstLetter)
+    }
+    for(let j = i+1; j < letterArr.length; j++){
+      if(!strArr.includes(firstLetter + letterArr.slice(i+1, j+1).join(""))){
+        strArr.push(firstLetter + letterArr.slice(i+1, j+1).join(""))
+      }
+    }
+  }
+  return strArr
 }
 
 if (require.main === module) {
